@@ -1,0 +1,22 @@
+{
+  "name": "guess-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "guess.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeff-Tian/guess-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeff-Tian/guess-game/issues"
+  },
+  "homepage": "https://github.com/Jeff-Tian/guess-game#readme",
+  "devDependencies": {
+    "mocha": "^5.0.5"
+  }
+}
