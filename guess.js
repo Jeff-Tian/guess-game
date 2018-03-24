@@ -1,37 +1,29 @@
 const assert = require('assert');
 
-let countA = function (answer, trial) {
-    let count = 0;
+let count = function (trial, answer) {
+    let a = 0;
+    let b = 0;
 
-    for (let i = 0; i < answer.length; i++) {
-        if (answer[i] === trial[i]) {
-            count++;
-            answer[i] = '_';
-        }
-    }
-    return count;
-};
+    for (let i = 0; i < trial.length; i++) {
+        let index = answer.indexOf(trial[i]);
 
-let countB = function (trial, answer) {
-    let count = 0;
-
-    for (let j = 0; j < trial.length; j++) {
-        let index = answer.indexOf(trial[j]);
-
-        if (index >= 0 && index !== j) {
-            count++;
+        if (index >= 0) {
+            index !== i ? b++ : a++;
             answer[index] = '_';
         }
 
     }
-    return count;
+    
+    return {a, b};
 };
 
 function guessTip(answer, trial) {
     answer = answer.split('');
     trial = trial.split('');
 
-    return `${countA(answer, trial)}A${countB(trial, answer)}B`;
+    let {a, b} = count(trial, answer);
+
+    return `${a}A${b}B`;
 }
 
 describe('guess', function () {
@@ -76,5 +68,10 @@ describe('guess', function () {
     it('8. extreme case', () => {
         let tip = guessTip('12345678901234567890', '12345678901234567890')
         assert.equal(tip, '20A0B')
+    })
+
+    it('9. should print 1A1B', function () {
+        let tip = guessTip('5255', '5543')
+        assert.equal(tip, '1A1B')
     })
 })
