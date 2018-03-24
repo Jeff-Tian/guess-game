@@ -55,6 +55,8 @@ describe('guess', function () {
         assert.equal(tip, '1A1B')
     })
 
+    // =======================================
+    // Below cases are not make code to fail
 
     it('5. should print 4A0B', function () {
         let tip = guessTip('5543', '5543')
@@ -64,5 +66,15 @@ describe('guess', function () {
     it('6. should print 0A4B', () => {
         let tip = guessTip('1234', '4321')
         assert.equal(tip, '0A4B');
+    })
+
+    it('7. should print 0A0B', () => {
+        let tip = guessTip('12', '34')
+        assert.equal(tip, '0A0B')
+    })
+
+    it('8. extreme case', () => {
+        let tip = guessTip('12345678901234567890', '12345678901234567890')
+        assert.equal(tip, '20A0B')
     })
 })
